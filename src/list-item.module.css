@@ -1,0 +1,27 @@
+.listItem {
+  padding: 0.5rem 1rem;
+  margin: 0.3rem;
+  text-align: center;
+  color: #233440;
+  border: 1px solid #233434;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  position: relative;
+}
+
+.listItemTooltip {
+  position: absolute;
+  right: -6rem;
+  width: 5rem;
+}
+
+.listItem:hover {
+  background-color: lightgray;
+}
+
+.listItemContainer {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+}

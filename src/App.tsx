@@ -1,24 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useRef } from "react";
+import classes from "./list-item.module.css";
+import { useDebouncedTooltip } from "./useDebouncedTooltip";
 
 function App() {
+  const listElements = [
+    "alpha",
+    "beta",
+    "gamma",
+    "teta",
+    "hexa",
+    "lambda",
+    "ksi",
+    "omega",
+  ];
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const elementClass = "list-item";
+
+  const currentElementId = useDebouncedTooltip(containerRef, elementClass);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>app</div>
+      <div className={classes.listItemContainer} ref={containerRef}>
+        {listElements.map((element) => (
+          <span className={`${classes.listItem} ${elementClass}`} id={element}>
+            {element}
+            {currentElementId === element && (
+              <span className={classes.listItemTooltip}>{element}</span>
+            )}
+          </span>
+        ))}
+      </div>
     </div>
   );
 }
